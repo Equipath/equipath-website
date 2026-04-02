@@ -1,0 +1,94 @@
+---
+---
+
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur-xl bg-dark/80 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center group" id="nav-logo">
+      <img
+        src="/assets/images/logo-white.png"
+        alt="EquiPath"
+        class="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity hidden"
+        id="logo-white"
+      />
+      <img
+        src="/assets/images/logo-navy.png"
+        alt="EquiPath"
+        class="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity hidden"
+        id="logo-navy"
+      />
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-8" id="nav-links">
+      <a href="#features" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Features</a>
+      <a href="#how-it-works" class="text-sm opacity-70 hover:opacity-100 transition-opacity">How It Works</a>
+      <a href="#who-its-for" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Who It's For</a>
+      <a href="#get-started" class="text-sm opacity-70 hover:opacity-100 transition-opacity">Get Started</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-4">
+      <a
+        href="https://app.equipath.online"
+        class="hidden sm:inline-flex text-sm opacity-70 hover:opacity-100 transition-opacity"
+        id="nav-signin"
+      >
+        Sign In
+      </a>
+      <a
+        href="#get-started"
+        class="group inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+        id="nav-cta"
+      >
+        Get Started
+        <svg class="w-4 h-4 cta-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 12L12 4M12 4H6M12 4v6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Nav adapts to dark hero → light body scroll
+  const nav = document.getElementById("nav")!;
+  const logoWhite = document.getElementById("logo-white")!;
+  const logoNavy = document.getElementById("logo-navy")!;
+  const navLinks = document.getElementById("nav-links")!;
+  const navSignin = document.getElementById("nav-signin")!;
+  const navCta = document.getElementById("nav-cta")!;
+
+  function updateNav() {
+    const scrolled = window.scrollY > window.innerHeight * 0.7;
+
+    if (scrolled) {
+      // Light mode
+      nav.classList.remove("bg-dark/80", "border-white/10");
+      nav.classList.add("bg-white/90", "border-border", "shadow-sm");
+      logoWhite.classList.add("hidden");
+      logoNavy.classList.remove("hidden");
+      navLinks.classList.remove("text-white");
+      navLinks.classList.add("text-text");
+      navSignin.classList.remove("text-white");
+      navSignin.classList.add("text-text");
+      navCta.classList.remove("bg-white", "text-dark");
+      navCta.classList.add("bg-cta", "text-cta-text");
+    } else {
+      // Dark mode (hero)
+      nav.classList.add("bg-dark/80", "border-white/10");
+      nav.classList.remove("bg-white/90", "border-border", "shadow-sm");
+      logoNavy.classList.add("hidden");
+      logoWhite.classList.remove("hidden");
+      navLinks.classList.add("text-white");
+      navLinks.classList.remove("text-text");
+      navSignin.classList.add("text-white");
+      navSignin.classList.remove("text-text");
+      navCta.classList.add("bg-white", "text-dark");
+      navCta.classList.remove("bg-cta", "text-cta-text");
+    }
+  }
+
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
+</script>

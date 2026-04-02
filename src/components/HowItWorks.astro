@@ -1,0 +1,60 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Add Your Entities",
+    description: "Create your business entities in minutes. Import LLCs, trusts, corporations — any structure, any jurisdiction.",
+  },
+  {
+    number: "02",
+    title: "Track Compliance",
+    description: "Set up filing deadlines and receive smart reminders. The compliance calendar keeps every jurisdiction in view.",
+  },
+  {
+    number: "03",
+    title: "Stay Organized",
+    description: "Access documents, ownership charts, and reports anytime, anywhere. Share securely with your team and advisors.",
+  },
+];
+---
+
+<section id="how-it-works" class="relative py-28 sm:py-36 bg-bg-alt">
+  <div class="max-w-5xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="fade-up text-center mb-20">
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-text">
+        <span class="font-serif italic font-normal text-text-muted">Designed for</span>
+        <br />
+        Lasting Simplicity.
+      </h2>
+      <p class="text-text-muted text-lg max-w-xl mx-auto">
+        Three steps from scattered records to complete control.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative">
+      <!-- Vertical Line -->
+      <div class="absolute left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-accent/30 via-accent/10 to-transparent hidden sm:block" aria-hidden="true"></div>
+
+      <div class="space-y-12">
+        {steps.map((step) => (
+          <div class="fade-up flex gap-8 items-start">
+            <!-- Number -->
+            <div class="relative z-10 flex-shrink-0 w-14 h-14 rounded-2xl bg-bg-card border border-border flex items-center justify-center shadow-sm">
+              <span class="font-display font-bold text-accent text-sm">{step.number}</span>
+            </div>
+
+            <!-- Content -->
+            <div class="pt-2">
+              <h3 class="font-display font-semibold text-xl mb-2 text-text">{step.title}</h3>
+              <p class="text-text-muted leading-relaxed max-w-lg">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider mt-28 sm:mt-36 max-w-4xl mx-auto" aria-hidden="true"></div>
+</section>

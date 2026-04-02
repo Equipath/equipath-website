@@ -1,0 +1,74 @@
+---
+const features = [
+  {
+    icon: `<path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />`,
+    title: "Entity Organization",
+    description: "Centralize your LLCs, trusts, and ownership structures in a single, intuitive dashboard.",
+  },
+  {
+    icon: `<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+    title: "Post-Quantum Encryption",
+    description: "All data encrypted with ML-KEM-1024, the latest NIST standard. We never see your business data.",
+    badge: "Zero-Knowledge",
+  },
+  {
+    icon: `<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />`,
+    title: "Compliance Calendar",
+    description: "Automate filing and renewal reminders. Never miss a deadline across any jurisdiction.",
+  },
+  {
+    icon: `<path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />`,
+    title: "Relationship Mapping",
+    description: "Visualize ownership hierarchies and entity relationships with interactive graphs.",
+  },
+  {
+    icon: `<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />`,
+    title: "Document Management",
+    description: "Store and organize corporate records with zero-knowledge encryption. Your documents stay private.",
+    badge: "Premium",
+  },
+  {
+    icon: `<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />`,
+    title: "Share & Permissions",
+    description: "Control stakeholder access with granular, category-based permissions across your entities.",
+    badge: "Premium",
+  },
+];
+---
+
+<section id="features" class="relative py-28 sm:py-36 bg-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="fade-up text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-text">
+        One platform.
+        <span class="font-serif italic font-normal text-text-muted">Total control.</span>
+      </h2>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto">
+        Everything you need to manage, track, and protect your business entities.
+      </p>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
+      {features.map((feature) => (
+        <div class="fade-up card-hover relative rounded-2xl border border-border bg-bg-card p-7">
+          {feature.badge && (
+            <span class="absolute top-5 right-5 text-[11px] font-semibold uppercase tracking-wider text-accent bg-accent-dim px-2.5 py-0.5 rounded-full">
+              {feature.badge}
+            </span>
+          )}
+          <div class="w-10 h-10 rounded-xl bg-accent-dim flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <Fragment set:html={feature.icon} />
+            </svg>
+          </div>
+          <h3 class="font-display font-semibold text-lg mb-2 text-text">{feature.title}</h3>
+          <p class="text-text-muted text-sm leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="section-divider mt-28 sm:mt-36 max-w-4xl mx-auto" aria-hidden="true"></div>
+</section>
