@@ -1,0 +1,128 @@
+---
+const screenshots = [
+  {
+    src: "/assets/images/screenshots/portfolio-tree.png",
+    alt: "Equipath portfolio view showing an interactive ownership tree with entities and ownership percentages",
+    label: "Portfolio Tree View",
+    free: true,
+  },
+  {
+    src: "/assets/images/screenshots/entity-info.png",
+    alt: "Equipath entity information page showing details for Morrison Family Office LLC",
+    label: "Entity Details",
+    free: true,
+  },
+  {
+    src: "/assets/images/screenshots/filings.png",
+    alt: "Equipath filings tracker showing annual list filing history with status and due dates",
+    label: "Filing Tracker",
+    free: true,
+  },
+  {
+    src: "/assets/images/screenshots/registrations.png",
+    alt: "Equipath registrations view showing jurisdiction, type, and compliance status",
+    label: "Registrations",
+    free: true,
+  },
+  {
+    src: "/assets/images/screenshots/ownership.png",
+    alt: "Equipath ownership table showing direct and indirect ownership chains across entities",
+    label: "Ownership Table",
+    free: true,
+  },
+];
+---
+
+<section class="relative py-28 sm:py-36 bg-bg-alt overflow-hidden">
+  <!-- Decorative blob -->
+  <div class="blob-light w-[500px] h-[500px] -top-40 -right-40" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="fade-up text-center mb-14">
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-text">
+        See it
+        <span class="font-serif italic font-normal text-text-muted">in action.</span>
+      </h2>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto">
+        All of this is included free. No credit card, no trial expiration — just a better way to manage your entities.
+      </p>
+    </div>
+
+    <!-- Screenshot Carousel -->
+    <div class="fade-up">
+      <!-- Tab Nav -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8" role="tablist" id="showcase-tabs">
+        {screenshots.map((s, i) => (
+          <button
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-controls={`showcase-panel-${i}`}
+            data-index={i}
+            class:list={[
+              "showcase-tab px-4 py-2 rounded-full text-sm font-medium transition-all",
+              i === 0
+                ? "bg-accent text-white"
+                : "bg-surface text-text-muted hover:bg-border hover:text-text",
+            ]}
+          >
+            {s.label}
+            {s.free && (
+              <span class="ml-1.5 text-[10px] uppercase tracking-wider opacity-70">Free</span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      <!-- Panels -->
+      <div class="relative">
+        {screenshots.map((s, i) => (
+          <div
+            id={`showcase-panel-${i}`}
+            role="tabpanel"
+            class:list={[
+              "showcase-panel rounded-2xl border border-border overflow-hidden shadow-lg bg-white",
+              i !== 0 && "hidden",
+            ]}
+          >
+            <img
+              src={s.src}
+              alt={s.alt}
+              class="w-full h-auto"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider mt-28 sm:mt-36 max-w-4xl mx-auto" aria-hidden="true"></div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".showcase-tab");
+  const panels = document.querySelectorAll<HTMLDivElement>(".showcase-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const index = Number(tab.dataset.index);
+
+      tabs.forEach((t, i) => {
+        const active = i === index;
+        t.setAttribute("aria-selected", String(active));
+        if (active) {
+          t.classList.add("bg-accent", "text-white");
+          t.classList.remove("bg-surface", "text-text-muted", "hover:bg-border", "hover:text-text");
+        } else {
+          t.classList.remove("bg-accent", "text-white");
+          t.classList.add("bg-surface", "text-text-muted", "hover:bg-border", "hover:text-text");
+        }
+      });
+
+      panels.forEach((p, i) => {
+        p.classList.toggle("hidden", i !== index);
+      });
+    });
+  });
+</script>
